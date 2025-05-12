@@ -55,13 +55,13 @@ body {
 
 .search-section select:focus {
   outline: none;
-  border-color: #666;
+  border-color: #FF003B;
 }
 
 /* chat section */
 .chatbox {
   margin: 40px 0;
-  border: 2px solid #000;
+  border: 2px solid #FF003B;
   border-radius: 8px;
   padding: 26px;
 }
@@ -135,6 +135,25 @@ body {
   outline-offset: 2px;
 }
 
+/* Chat message styles */
+.chat-message {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* User message styles */
+.user-message {
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+  color: #0f5132;
+  text-align: right;
+}
+
 /* visually hidden */
 .visually-hidden {
   position: absolute;
@@ -186,6 +205,8 @@ body {
   display: flex;
   gap: 15px;
   min-height: 160px;
+  position: relative;
+  overflow: hidden;
 }
 
 .product-card img {
@@ -213,6 +234,30 @@ body {
   color: #666;
 }
 
+.product-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: top 0.3s ease;
+  z-index: 1;
+}
+
+.product-card:hover .product-overlay {
+  top: 0;
+}
+
+/* Highlight selected product cards */
+.product-card.selected {
+  border: 2px solid #000;
+  background-color: #f0f0f0;
+}
+
 /* selected products */
 .selected-products {
   margin: 40px 0;
@@ -230,6 +275,49 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+/* Placeholder message for selected products */
+.selected-products .placeholder-message {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* Selected product styles */
+.selected-product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.selected-product:hover {
+  background-color: #e0e0e0;
+}
+
+.selected-product img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.selected-product-info h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.selected-product-info p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
 }
 
 .generate-btn {
@@ -252,4 +340,95 @@ body {
 
 .generate-btn i {
   margin-right: 8px;
+}
+
+/* Remove button for individual products */
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: auto;
+  transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Clear All button */
+.clear-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background: #ff4d4d;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.clear-btn:hover {
+  background: #cc0000;
+}
+
+/* General RTL adjustments */
+:dir(rtl) {
+  direction: rtl;
+}
+
+:dir(rtl) .page-wrapper {
+  text-align: right;
+}
+
+:dir(rtl) .product-card {
+  flex-direction: row-reverse;
+}
+
+:dir(rtl) .product-info {
+  text-align: right;
+}
+
+:dir(rtl) .product-overlay {
+  text-align: right;
+}
+
+:dir(rtl) .selected-product {
+  flex-direction: row-reverse;
+}
+
+:dir(rtl) .selected-product-info {
+  text-align: right;
+}
+
+:dir(rtl) .chatbox {
+  text-align: right;
+}
+
+:dir(rtl) .chat-message.user-message {
+  text-align: left; /* Keep user messages aligned to the left for consistency */
+}
+
+/* Adjustments for buttons in RTL */
+:dir(rtl) .remove-btn {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+:dir(rtl) .clear-btn,
+:dir(rtl) .generate-btn {
+  text-align: center;
+}
+
+/* Adjustments for the category filter */
+:dir(rtl) .search-section select {
+  text-align: right;
+  padding-right: 16px;
+  padding-left: 8px;
 }
